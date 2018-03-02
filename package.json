@@ -1,9 +1,10 @@
 {
-	"name": "fcc-learn-npm-package-json",
+	"name": "wbernest-image-abstraction-layer",
 	"version": "1",
 	"dependencies": {
 		"express": "^4.14.0",
-		"mongodb": "3.0.3"
+		"mongodb": "3.0.3",
+		"google-images": "2.1.0"
 	},
 	"main": "server.js",
 	"scripts": {

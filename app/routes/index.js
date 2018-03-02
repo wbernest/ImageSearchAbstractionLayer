@@ -9,12 +9,12 @@ var GetResultshHandler = require("./../controllers/GetResultsHandler.server.js")
 module.exports = function (app) {
     var addSearchHandler;
     var getSearchesHandler;
-    var getResultsHandler;
+    var getResultsHandler = new GetResultshHandler();
 
     app.route('/api/imagesearch/:searchtext')
     .get(function (req, res) {
         addSearchHandler.addSearch(req.params.searchtext);
-        getResultsHandler.getResults(res, req.params.searchtext); 
+        getResultsHandler.getResults(res, req.params.searchtext, req.query.offset); 
     });
         
     app.route('/api/latest/imagesearch')
@@ -29,7 +29,6 @@ module.exports = function (app) {
 
         addSearchHandler = new AddSearchHandler(table);
         getSearchesHandler = new GetSearchesHandler(table);
-        getResultsHandler = new GetResultshHandler(table);
 
         if(err) console.log(err);
     });

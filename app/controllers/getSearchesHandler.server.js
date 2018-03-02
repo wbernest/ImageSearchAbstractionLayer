@@ -8,7 +8,6 @@ function getSearchesHandler(db){
         db.find({}).toArray( function(err, data){
             if(err) throw err;
 
-            console.log(data);
             res.send(data.map(function(a){ return {term: a.term, when: a.when};}));
         });
 
