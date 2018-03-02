@@ -8,6 +8,7 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+var routes = require("./app/routes/index.js");
 
 if (!process.env.DISABLE_XORIGIN) {
   app.use(function(req, res, next) {
@@ -51,7 +52,9 @@ app.use(function(err, req, res, next) {
       .type('txt')
       .send(err.message || 'SERVER ERROR');
   }  
-})
+});
+
+routes(app);
 
 app.listen((process.env.PORT != undefined? process.env.PORT : '8080'), function () {
   console.log('Node.js listening ...');
