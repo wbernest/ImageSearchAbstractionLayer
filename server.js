@@ -4,7 +4,7 @@
  * ***************************************************/
 
 'use strict';
-
+/* jshint node: true */
 var fs = require('fs');
 var express = require('express');
 var app = express();
@@ -37,7 +37,9 @@ app.route('/_api/package.json')
 app.route('/')
     .get(function(req, res) {
 		  res.sendFile(process.cwd() + '/views/index.html');
-    })
+    });
+
+routes(app);
 
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
@@ -54,9 +56,9 @@ app.use(function(err, req, res, next) {
   }  
 });
 
-routes(app);
+
 
 app.listen((process.env.PORT != undefined? process.env.PORT : '8080'), function () {
-  console.log('Node.js listening ...');
+  console.log('Node.js listening on port '+process.env.PORT + ' ...');
 });
 

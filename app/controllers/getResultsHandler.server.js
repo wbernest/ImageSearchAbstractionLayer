@@ -1,12 +1,12 @@
-(function(){
+/* jshint node: true */
+'use strict';
 
-    'use strict';
+function getResultsHandler(db){
 
-    function getResultsHandler(db){
+    /* jshint validthis: true */
+    this.getResults = function(res, search){
+        res.send('Got some results!!!');
+    };
+}
 
-        /* jshint validthis: true */
-        this.getResults = function(res, search){
-
-        };
-    }
-}());
+module.exports = getResultsHandler;
